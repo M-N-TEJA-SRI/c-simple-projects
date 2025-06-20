@@ -1,0 +1,87 @@
+#include <iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+
+void game(int original_num, int chances) {
+    int guessed_number;
+
+    while (chances) {
+        cout << "Enter your guess: ";
+        cin >> guessed_number;
+
+        if (guessed_number == original_num) {
+            cout << "🎉 You won the game!\n";
+            cout << "Congratulations!\n";
+            return; 
+        }
+
+        if (guessed_number > original_num)
+            cout << "Too high!\n";
+        else
+            cout << "Too low!\n";
+
+        chances--;
+        cout << "Chances left: " << chances << "\n";
+    }
+
+    cout << "❌ You've used all chances! The correct number was " << original_num << ".\n";
+}
+
+int main() {
+    cout << "🎮 Welcome to the Guessing Game!\n";
+    int choice = 1;
+
+    while (choice != 2) {
+        cout << "\n1 - Play\n2 - Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                int chances = 5;
+                srand(time(0)); 
+                int original_num = rand() % 1000 + 1; 
+                game(original_num, chances);
+                break;
+            }
+            case 2:
+                cout << "👋 Visit again!\n";
+                break;
+            default:
+                cout << "❗ Invalid choice. Please try again.\n";
+        }
+    }
+
+    return 0;
+}
+🎮 Welcome to the Guessing Game!
+
+1 - Play
+2 - Exit
+Enter your choice: 1
+Enter your guess: 45
+Too low!
+Chances left: 4
+Enter your guess: 900
+Too high!
+Chances left: 3
+Enter your guess: 655
+Too high!
+Chances left: 2
+Enter your guess: 343
+Too low!
+Chances left: 1
+Enter your guess: 440
+Too low!
+Chances left: 0
+❌ You've used all chances! The correct number was 627.
+
+1 - Play
+2 - Exit
+Enter your choice: 500
+❗ Invalid choice. Please try again.
+
+1 - Play
+2 - Exit
+Enter your choice: 
